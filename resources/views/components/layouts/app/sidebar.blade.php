@@ -12,21 +12,57 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('Examen')" class="grid">
+                    <flux:navlist.item 
+                        icon="home" 
+                        :href="route('dashboard')" 
+                        :current="request()->routeIs('dashboard')" 
+                        wire:navigate>
+                        {{ __('Pagina Principal') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item 
+                        icon="users" 
+                        :href="route('usuarios')" 
+                        :current="request()->routeIs('usuarios')" 
+                        wire:navigate>
+                        {{ __('Usuarios') }}
+                    </flux:navlist.item>
+
+                    <flux:navlist.item 
+                        icon="book-open" 
+                        :href="route('materias')" 
+                        :current="request()->routeIs('materias')" 
+                        wire:navigate>
+                        {{ __('Materias') }}
+                    </flux:navlist.item>
+
+                    <flux:navlist.item 
+                        icon="academic-cap" 
+                        :href="route('inscripciones')" 
+                        :current="request()->routeIs('inscripciones')" 
+                        wire:navigate>
+                        {{ __('Inscripciones') }}
+                    </flux:navlist.item>
+
+                    <flux:navlist.item 
+                        icon="bookmark-square" 
+                        :href="route('calificaciones')" 
+                        :current="request()->routeIs('calificaciones')" 
+                        wire:navigate>
+                        {{ __('Calificaciones') }}
+                    </flux:navlist.item>
+                    
                 </flux:navlist.group>
             </flux:navlist>
-
             <flux:spacer />
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
+                        @csrf
+                        <flux:navlist.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
+                            {{ __(' Cerrar sesion') }}
+                        </flux:navlist.item>
+                </form>
 
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
             </flux:navlist>
 
             <!-- Desktop User Menu -->
@@ -68,7 +104,7 @@
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
-                            {{ __('Log Out') }}
+                            {{ __(' Cerrar sesion') }}
                         </flux:menu.item>
                     </form>
                 </flux:menu>

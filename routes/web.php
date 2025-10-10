@@ -14,6 +14,21 @@ Route::get('/', function () {
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+Route::view('usuarios', 'usuarios')
+    ->middleware(['auth', 'verified'])
+    ->name('usuarios');
+
+Route::view('materias', 'materias')
+    ->middleware(['auth', 'verified'])
+    ->name('materias');
+
+Route::view('inscripciones', 'inscripciones')
+    ->middleware(['auth', 'verified'])
+    ->name('inscripciones');
+
+Route::view('calificaciones', 'calificaciones')
+    ->middleware(['auth', 'verified'])
+    ->name('calificaciones');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

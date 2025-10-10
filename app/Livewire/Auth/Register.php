@@ -22,6 +22,7 @@ class Register extends Component
 
     public string $password_confirmation = '';
 
+    public string $rol = '';
     /**
      * Handle an incoming registration request.
      */
@@ -29,6 +30,7 @@ class Register extends Component
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
+            'rol' => ['required', 'in:Cordinador,Profesor,Alumno'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
