@@ -28,7 +28,7 @@
             </thead>
             <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700 bg-white dark:bg-neutral-900">
 
-                {{-- Fila de creación --}}
+              
                 @if ($creating)
                     <tr>
                         <td class="px-4 py-3 align-top">
@@ -69,7 +69,7 @@
                     </tr>
                 @endif
 
-                {{-- Filas de inscripciones --}}
+               
                 @forelse ($inscripciones as $i)
                     <tr wire:key="ins-{{ $i->id }}">
                         <td class="px-4 py-3 align-top">

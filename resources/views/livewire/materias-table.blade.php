@@ -1,7 +1,7 @@
 <div class="space-y-4">
     @if (session('success'))
         <div class="rounded-md border border-green-600/30 bg-green-600/10 px-4 py-2 text-sm text-green-700 dark:text-green-300">
-            {{ session('success') }}
+   
         </div>
     @endif
 
