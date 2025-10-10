@@ -20,6 +20,7 @@
                         wire:navigate>
                         {{ __('Pagina Principal') }}
                     </flux:navlist.item>
+                     @if (auth()->user() && auth()->user()->rol === 'Cordinador')
                     <flux:navlist.item 
                         icon="users" 
                         :href="route('usuarios')" 
@@ -43,7 +44,8 @@
                         wire:navigate>
                         {{ __('Inscripciones') }}
                     </flux:navlist.item>
-
+                    @endif
+                    @unless (auth()->user() && auth()->user()?->rol === 'Cordinador')
                     <flux:navlist.item 
                         icon="bookmark-square" 
                         :href="route('calificaciones')" 
@@ -51,7 +53,7 @@
                         wire:navigate>
                         {{ __('Calificaciones') }}
                     </flux:navlist.item>
-                    
+                    @endunless
                 </flux:navlist.group>
             </flux:navlist>
             <flux:spacer />

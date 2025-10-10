@@ -35,7 +35,7 @@
                             <span class="text-neutral-400">—</span>
                         </td>
                         <td class="px-4 py-3 align-top">
-                            <flux:select wire:model.defer="create.id_alumno" class="w-full" placeholder="Selecciona alumno">
+                            <flux:select wire:model.defer="create.id_alumno" class="w-full" >
                                <flux:select.option value="">
                                     Selecciona alumno
                                 </flux:select.option>
@@ -46,7 +46,7 @@
                             @error('create.id_alumno') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                         </td>
                         <td class="px-4 py-3 align-top">
-                            <flux:select wire:model.defer="create.id_materia" class="w-full" placeholder="Selecciona materia">
+                            <flux:select wire:model.defer="create.id_materia" class="w-full" >
                                <flux:select.option value="">
                                     Selecciona materia
                                 </flux:select.option>

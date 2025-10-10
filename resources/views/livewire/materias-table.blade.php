@@ -26,7 +26,7 @@
             </thead>
 
             <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700 bg-white dark:bg-neutral-900">
-                {{-- Fila para crear --}}
+               
                 @if ($creating)
                     <tr>
                         <td class="px-4 py-3">—</td>
@@ -38,7 +38,10 @@
                                 </div>
 
                                 <div>
-                                    <flux:select wire:model.defer="create.id_profesor" placeholder="Selecciona profesor">
+                                    <flux:select wire:model.defer="create.id_profesor" >
+                                            <flux:select.option value="">
+                                                Selecciona profesor
+                                            </flux:select.option>
                                         @foreach ($profesores as $p)
                                             <flux:select.option :value="$p->id">{{ $p->name }}</flux:select.option>
                                         @endforeach
