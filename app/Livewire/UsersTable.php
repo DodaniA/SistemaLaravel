@@ -70,7 +70,7 @@ class UsersTable extends Component
         session()->flash('success', 'Usuario creado.');
     }
 
-    /** ---------- EDICIÓN INLINE (si lo usas) ---------- */
+    /** ---------- EDICIÓN ---------- */
     protected function updateRules(): array
     {
         return [
