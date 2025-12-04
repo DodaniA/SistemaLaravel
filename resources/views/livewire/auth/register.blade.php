@@ -26,13 +26,12 @@
             placeholder="email@example.com"
         />
         <!-- Rol -->
-        <flux:select wire:model="rol" 
+        <flux:select wire:model="role" 
             placeholder="Que tipo de usuario eres..."
             :label="__('Selecciona tu rol')"
             required>
-            <flux:select.option>Cordinador</flux:select.option>
-            <flux:select.option>Profesor</flux:select.option>
-            <flux:select.option>Alumno</flux:select.option>
+            <flux:select.option>Paciente</flux:select.option>
+            <flux:select.option>Medico</flux:select.option>
         </flux:select>
 
         <!-- Password -->

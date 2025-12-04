@@ -4,13 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Calificacion extends Model
+class Receta extends Model
 {
     //
     use SoftDeletes;
+    protected $table = 'recetas';
+    protected $fillable = [
+        'paciente_id',
+        'doctor_id',
+        'cita_id',
+        'indicaciones',
+    ];
     protected $dates = ['deleted_at'];
-    protected $table = 'calificaciones';
 
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'paciente_id');
+    }
 
 
     public function doctor()
@@ -18,16 +29,10 @@ class Calificacion extends Model
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
 
- 
-    public function paciente()
-    {
-        return $this->belongsTo(Paciente::class, 'paciente_id');
-    }
-
-
     public function cita()
     {
         return $this->belongsTo(Cita::class, 'cita_id');
     }
+
+
 }
- 
