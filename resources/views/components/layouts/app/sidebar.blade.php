@@ -42,7 +42,7 @@
                         :href="route('medicamentos-inventario')" 
                         :current="request()->routeIs('medicamentos-inventario')" 
                         wire:navigate>
-                        {{ __('medicamentos') }}
+                        {{ __('Medicamentos') }}
                     </flux:navlist.item>
                 
                     <flux:navlist.item 
