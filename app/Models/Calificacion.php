@@ -10,7 +10,14 @@ class Calificacion extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = 'calificaciones';
-
+    
+    protected $fillable = [
+        'doctor_id',
+        'paciente_id',
+        'cita_id',
+        'calificacion',
+        'comentario',
+    ];
 
 
     public function doctor()

@@ -89,7 +89,7 @@
     --color-accent-foreground: var(--color-white);
     
     /* Colores de Fondo */
-    --color-background: var(--color-orange-50);
+    --color-background: #faf8f3;
     --color-foreground: var(--color-slate-800);
     
     /* Colores de Tarjetas */

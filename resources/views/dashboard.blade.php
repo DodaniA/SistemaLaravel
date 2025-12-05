@@ -7,7 +7,7 @@
            $completo = false;
             if ($user->role === 'Paciente') {
                 $completo = \App\Models\Paciente::where('user_id', $user->id)->exists();
-            } elseif ($user->role === 'Doctor') {
+            } elseif ($user->role === 'Medico') {
                 $completo = \App\Models\Doctor::where('user_id', $user->id)->exists();
             }
         @endphp
@@ -16,7 +16,7 @@
         @if ($user->role === 'Paciente' && !$completo)
             <livewire:formulario-paciente />
         @endif
-        @if ($user->role === 'Doctor' && !$completo)
+        @if ($user->role === 'Medico' && !$completo)
             <livewire:formulario-medico />
         @endif
        

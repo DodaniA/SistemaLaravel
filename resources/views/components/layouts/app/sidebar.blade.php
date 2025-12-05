@@ -20,7 +20,15 @@
                         wire:navigate>
                         {{ __('Pagina Principal') }}
                     </flux:navlist.item>
-                     @if (auth()->user() && auth()->user()->rol === 'Cordinador')
+                    <flux:navlist.item 
+                        icon="calendar" 
+                        :href="route('citas')" 
+                        :current="request()->routeIs('citas')" 
+                        wire:navigate>
+                        {{ __('Citas') }}
+                    </flux:navlist.item>
+                    
+                     @if (auth()->user() && auth()->user()->role === 'Administrador')
                     <flux:navlist.item 
                         icon="users" 
                         :href="route('usuarios')" 
@@ -28,24 +36,15 @@
                         wire:navigate>
                         {{ __('Usuarios') }}
                     </flux:navlist.item>
-
-                    <flux:navlist.item 
-                        icon="book-open" 
-                        :href="route('materias')" 
-                        :current="request()->routeIs('materias')" 
-                        wire:navigate>
-                        {{ __('Materias') }}
-                    </flux:navlist.item>
-
-                    <flux:navlist.item 
-                        icon="academic-cap" 
-                        :href="route('inscripciones')" 
-                        :current="request()->routeIs('inscripciones')" 
-                        wire:navigate>
-                        {{ __('Inscripciones') }}
-                    </flux:navlist.item>
                     @endif
-                    @unless (auth()->user() && auth()->user()?->rol === 'Cordinador')
+                    <flux:navlist.item 
+                        icon="bookmark-square" 
+                        :href="route('medicamentos-inventario')" 
+                        :current="request()->routeIs('medicamentos-inventario')" 
+                        wire:navigate>
+                        {{ __('medicamentos') }}
+                    </flux:navlist.item>
+                
                     <flux:navlist.item 
                         icon="bookmark-square" 
                         :href="route('calificaciones')" 
@@ -53,7 +52,6 @@
                         wire:navigate>
                         {{ __('Calificaciones') }}
                     </flux:navlist.item>
-                    @endunless
                 </flux:navlist.group>
             </flux:navlist>
             <flux:spacer />
