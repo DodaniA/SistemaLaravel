@@ -15,7 +15,7 @@ class UsersTable extends Component
     /** Creación (form arriba o donde lo pongas) */
     public $name = '';
     public $email = '';
-    public $rol = 'Alumno'; // Ajusta tu rol por defecto si quieres
+    public $role = ' Paciente'; 
     public $password = '';
     public $password_confirmation = '';
 
@@ -24,7 +24,7 @@ class UsersTable extends Component
     public $form = [
         'name'  => '',
         'email' => '',
-        'rol'   => '',
+        'role'   => '',
     ];
 
     public function mount()
@@ -34,7 +34,7 @@ class UsersTable extends Component
 
     public function loadUsers()
     {
-        $this->users = User::select('id','name','email','rol')
+        $this->users = User::select('id','name','email','role')
             ->orderBy('id','desc')
             ->get();
     }
@@ -45,7 +45,7 @@ class UsersTable extends Component
         return [
             'name'                  => ['required','string','max:255'],
             'email'                 => ['required','email','max:255','unique:users,email'],
-            'rol'                   => ['required','in:Cordinador,Profesor,Alumno'], // unifica ortografía con tu BD
+            'role'                   => ['required','in:Cordinador,Profesor,Alumno'], // unifica ortografía con tu BD
             'password'              => ['required','string','min:8','confirmed'],
         ];
     }
@@ -57,7 +57,7 @@ class UsersTable extends Component
         User::create([
             'name'     => $this->name,
             'email'    => $this->email,
-            'rol'      => $this->rol,
+            'role'      => $this->rol,
             'password' => Hash::make($this->password),
         ]);
 
@@ -79,7 +79,7 @@ class UsersTable extends Component
                 'required','email','max:255',
                 Rule::unique('users','email')->ignore($this->editId),
             ],
-            'form.rol'   => ['required','in:Cordinador,Profesor,Alumno'],
+            'form.role'   => ['required','in:Cordinador,Profesor,Alumno'],
         ];
     }
 
@@ -90,7 +90,7 @@ class UsersTable extends Component
         $this->form = [
             'name'  => $user->name,
             'email' => $user->email,
-            'rol'   => $user->rol,
+            'role'   => $user->rol,
         ];
     }
 
@@ -114,7 +114,7 @@ class UsersTable extends Component
     protected function resetEdit()
     {
         $this->editId = null;
-        $this->form = ['name'=>'','email'=>'','rol'=>''];
+        $this->form = ['name'=>'','email'=>'','role'=>''];
     }
 
     /** ---------- RENDER ---------- */

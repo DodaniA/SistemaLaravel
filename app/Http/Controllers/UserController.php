@@ -15,7 +15,6 @@ class UserController extends Controller
         if (!$user) {
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
-
         if ($user->role === 'Paciente') {
             $paciente = Paciente::where('user_id', $user->id)->first();
 

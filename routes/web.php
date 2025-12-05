@@ -4,9 +4,10 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
-
+use App\Livewire\FormularioMedico;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -29,7 +30,6 @@ Route::view('inscripciones', 'inscripciones')
 Route::view('calificaciones', 'calificaciones')
     ->middleware(['auth', 'verified'])
     ->name('calificaciones');
-
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
