@@ -6,7 +6,7 @@
     <livewire:calificar/>
 @endif
 @if ($user->role === 'Medico')
-    <livewire:estadistica-cal />
+    <livewire:estadistica-cal/>
 @endif
 
 </x-layouts.app>

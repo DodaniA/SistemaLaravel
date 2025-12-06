@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import '../../vendor/livewire/flux/dist/flux.css';
+@import "tailwindcss";
+@import "../../vendor/livewire/flux/dist/flux.css";
 
 :root {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -20,10 +17,13 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
+    /* Color blanco base */
+    --color-white: #ffffff;
+
     /* ============================================
        PALETA NARANJA MÉDICO - TEMA CLARO
        ============================================ */
-    
+
     /* Naranja Principal */
     --color-orange-50: #fff7ed;   /* Fondo muy suave */
     --color-orange-100: #ffedd5;  /* Hover states */
@@ -187,17 +187,20 @@
    ============================================ */
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
-    @apply grid gap-2;
+    @apply grid;
+    gap: 0.5rem; /* equivalente a gap-2 sin usar @apply */
 }
 
 [data-flux-label] {
-    @apply !mb-0 !leading-tight font-semibold text-foreground;
+    @apply mb-0 leading-tight font-semibold;
+    margin-bottom: 0 !important;        /* reemplazo de !mb-0 */
+    color: var(--color-foreground);     /* reemplazo de text-foreground */
 }
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
 }
 
 /* ============================================
@@ -207,7 +210,7 @@ select:focus[data-flux-control] {
 @layer components {
     /* Botones Médicos */
     .btn-medical-primary {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+        @apply inline-flex items-center justify-center px-6 py-3 
                bg-gradient-to-r from-orange-600 to-orange-500 
                text-white font-semibold rounded-lg 
                shadow-md shadow-orange-600/20 
@@ -215,10 +218,11 @@ select:focus[data-flux-control] {
                hover:scale-[1.02] active:scale-[0.98]
                transition-all duration-200 ease-in-out
                disabled:opacity-50 disabled:cursor-not-allowed;
+        gap: 0.5rem; /* antes era gap-2 en @apply */
     }
     
     .btn-medical-secondary {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+        @apply inline-flex items-center justify-center px-6 py-3 
                bg-white dark:bg-slate-800 
                border-2 border-orange-200 dark:border-slate-700 
                text-slate-700 dark:text-slate-200 
@@ -227,24 +231,27 @@ select:focus[data-flux-control] {
                hover:border-orange-300 dark:hover:border-orange-500
                transition-all duration-200 ease-in-out
                disabled:opacity-50 disabled:cursor-not-allowed;
+        gap: 0.5rem;
     }
     
     .btn-medical-success {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+        @apply inline-flex items-center justify-center px-6 py-3 
                bg-emerald-600 text-white font-semibold rounded-lg 
                shadow-md shadow-emerald-600/20 
                hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/30
                transition-all duration-200 ease-in-out;
+        gap: 0.5rem;
     }
     
     .btn-medical-danger {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+        @apply inline-flex items-center justify-center px-6 py-3 
                bg-red-600 text-white font-semibold rounded-lg 
                shadow-md shadow-red-600/20 
                hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30
                transition-all duration-200 ease-in-out;
+        gap: 0.5rem;
     }
-    
+
     /* Tarjetas de Estadística */
     .stat-card {
         @apply bg-white dark:bg-slate-800 

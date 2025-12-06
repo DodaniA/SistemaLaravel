@@ -20,10 +20,13 @@ Route::view('usuarios', 'usuarios')
     Route::view('medicamentos-inventario', 'medicamentos-inventario')
     ->middleware(['auth', 'verified'])
     ->name('medicamentos-inventario');
+
 Route::view('materias', 'materias')
     ->middleware(['auth', 'verified'])
     ->name('materias');
-
+Route::view('atender', 'atender')
+    ->middleware(['auth', 'verified'])
+    ->name('atender');
 Route::view('inscripciones', 'inscripciones')
     ->middleware(['auth', 'verified'])
     ->name('inscripciones');

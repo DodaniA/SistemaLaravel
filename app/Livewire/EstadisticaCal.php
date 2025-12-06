@@ -19,27 +19,34 @@ class EstadisticaCal extends Component
 
     public function mount($doctorId = null)
     {
+        
         $this->doctorId = $doctorId;
+       
         $this->cargarEstadisticas();
     }
+    
 
     public function cargarEstadisticas()
     {   
-        $doctorId = $this->doctorId ?? Doctor::where('user_id', auth()->id())->first()?->id;
-        if (!$doctorId) {
-            $this->datos = [0, 0, 0, 0, 0];
-            return;
+        if (!$this->doctorId) {
+            $doctor = Doctor::where('user_id', auth()->id())->first();
+            if ($doctor) {
+                $this->doctorId = $doctor->id;
+            } else {
+                $this->datos = [0, 0, 0, 0, 0];
+                return;
+            }
         }
-
+        
         $this->datos = [
-            Calificacion::where('doctor_id', $doctorId)->where('calificacion', 1)->count(),
-            Calificacion::where('doctor_id', $doctorId)->where('calificacion', 2)->count(),
-            Calificacion::where('doctor_id', $doctorId)->where('calificacion', 3)->count(),
-            Calificacion::where('doctor_id', $doctorId)->where('calificacion', 4)->count(),
-            Calificacion::where('doctor_id', $doctorId)->where('calificacion', 5)->count(),
+            Calificacion::where('doctor_id', $this->doctorId)->where('calificacion', 1)->count(),
+            Calificacion::where('doctor_id', $this->doctorId)->where('calificacion', 2)->count(),
+            Calificacion::where('doctor_id', $this->doctorId)->where('calificacion', 3)->count(),
+            Calificacion::where('doctor_id', $this->doctorId)->where('calificacion', 4)->count(),
+            Calificacion::where('doctor_id', $this->doctorId)->where('calificacion', 5)->count(),
         ];
 
-        $calificaciones = Calificacion::where('doctor_id', $doctorId)->pluck('calificacion');
+        $calificaciones = Calificacion::where('doctor_id', $this->doctorId)->pluck('calificacion');
         
         $this->totalCalificaciones = $calificaciones->count();
         $this->promedioCalificacion = $this->totalCalificaciones > 0 

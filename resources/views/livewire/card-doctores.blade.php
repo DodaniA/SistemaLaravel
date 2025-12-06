@@ -98,7 +98,7 @@
         </div>
 
         <div class="border-t border-orange-200 dark:border-orange-800 pt-6">
-            <livewire:estadistica-cal :doctorId="$doctorSeleccionado->id" :key="'estadistica-'.$doctorSeleccionado->id" />
+            <livewire:estadistica-cal :doctorId="$doctorSeleccionado->id" :key="'estadistica-cal-'.$doctorSeleccionado->id" />
         </div>
 
         <div class="flex justify-end border-t border-orange-200 dark:border-orange-800 pt-4">

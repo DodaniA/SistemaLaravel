@@ -20,5 +20,7 @@
             <livewire:formulario-medico />
         @endif
         <livewire:card-doctores />
+
+        <livewire:citas-doctor/>
     </div>
 </x-layouts.app>

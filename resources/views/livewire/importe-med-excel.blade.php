@@ -22,7 +22,7 @@
             <flux:heading size="lg">Importar Medicamentos</flux:heading>
             <flux:subheading>Carga masiva de medicamentos desde archivo Excel</flux:subheading>
         </div>
-        <flux:button wire:click="descargarPlantilla" variant="ghost">
+        <flux:button wire:click="descargarPlantilla" variant="primary">
             <flux:icon.arrow-down-tray class="size-5" />
             Descargar Plantilla
         </flux:button>
