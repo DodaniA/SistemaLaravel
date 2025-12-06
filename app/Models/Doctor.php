@@ -24,4 +24,13 @@ class Doctor extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function citas()
+    {
+        return $this->hasMany(Cita::class);
+    }
+
+    public function calificaciones()
+    {
+        return $this->hasMany(Calificacion::class);
+    }
 }

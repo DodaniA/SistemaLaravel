@@ -37,6 +37,7 @@
                         {{ __('Usuarios') }}
                     </flux:navlist.item>
                     @endif
+                    @if (auth()->user() && auth()->user()->role === 'Medico')
                     <flux:navlist.item 
                         icon="bookmark-square" 
                         :href="route('medicamentos-inventario')" 
@@ -44,7 +45,7 @@
                         wire:navigate>
                         {{ __('Medicamentos') }}
                     </flux:navlist.item>
-                
+                    @endif
                     <flux:navlist.item 
                         icon="bookmark-square" 
                         :href="route('calificaciones')" 

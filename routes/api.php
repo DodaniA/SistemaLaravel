@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
-use App\Http\Controllers\UserController;
-
-Route::get('/user/{id}/completo', [UserController::class, 'completo']);  //api para saber si el usuario ya completo su informacion devuelve boleano
+Route::get('/medicamentos', [ApiController::class, 'listaDeMedicamentos']);
+Route::get('/tipos-sangre', [ApiController::class, 'tiposdesangre']);
+Route::get('/especialidades', [ApiController::class, 'especialidades']);

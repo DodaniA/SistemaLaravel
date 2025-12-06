@@ -39,7 +39,7 @@ class AgendaCita extends Component
         $clima = null;
 
         try {
-            // Coordenadas de San Luis Potosí
+            // Coordenadas de Slp
             $lat = 22.1516472;
             $lon = -100.9763993;
             
@@ -71,9 +71,6 @@ class AgendaCita extends Component
                     'ciudad'      => $ciudad,
                     'pais'        => $pais,
                 ]);
-                
-                // Opción 2: Formato texto simple (si prefieres string)
-                // $clima = "{$ciudad}, {$pais} - {$descripcion} - {$temp}°C (se siente {$feelsLike}°C) [{$main}]";
                 
             } else {
                 $clima = 'No disponible';

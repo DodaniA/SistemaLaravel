@@ -6,7 +6,7 @@
     @endif
 
     <div class="flex items-center justify-between">
-        <flux:heading size="lg">Gestión de Medicamentos</flux:heading>
+        <flux:heading size="lg"><h1 class="text-3xl font-bold text-gradient-orange">Gestión de Medicamentos</h1></flux:heading>
         <flux:button wire:click="abrirModalCrear" variant="primary">
             <flux:icon.plus class="size-5" />
              Nuevo Medicamento

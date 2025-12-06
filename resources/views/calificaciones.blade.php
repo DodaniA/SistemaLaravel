@@ -1,3 +1,12 @@
 <x-layouts.app :title="__('Calificaciones')" >
-<livewire:calificar/>
+@php
+    $user = auth()->user();
+@endphp
+@if ($user->role === 'Paciente')
+    <livewire:calificar/>
+@endif
+@if ($user->role === 'Medico')
+    <livewire:estadistica-cal />
+@endif
+
 </x-layouts.app>

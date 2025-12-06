@@ -43,6 +43,13 @@ class Agenda extends Component
                 ->where('estado', 'pendiente')
                 ->where('fecha_hora', '<', Carbon::now())
                 ->update(['estado' => 'completada']);
+
+            Cita::withTrashed() 
+            ->where('paciente_id', $pacienteId)
+            ->whereNotNull('deleted_at')
+            ->where('estado', '!=', 'cancelada')
+            ->where('estado','!=','completada') 
+            ->update(['estado' => 'cancelada']);
         }
         $this->cargarCitas();
     }

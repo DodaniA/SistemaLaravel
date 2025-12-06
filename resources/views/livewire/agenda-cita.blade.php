@@ -1,10 +1,10 @@
 <div>
-    <!-- Botón para abrir el modal -->
+   
     <flux:button @click="$flux.modal('modal-cita').show()">
         Nueva Cita
     </flux:button>
 
-    <!-- Modal -->
+
     <flux:modal name="modal-cita" class="space-y-6">
         <div>
             <flux:heading size="lg">Agendar Nueva Cita</flux:heading>
