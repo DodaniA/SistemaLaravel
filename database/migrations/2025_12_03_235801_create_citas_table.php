@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('paciente_id')->constrained('pacientes');
             $table->foreignId('doctor_id')->constrained('doctores');
             $table->timestamp('fecha_hora');
-            $table->string('estado');
+            $table->string('estado')->default('pendiente');
             $table->text('motivo')->nullable();
             $table->string('clima')->nullable();
             $table->timestamps();

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             EspecialidadSeeder::class,
             EfectoSeeder::class,
             ViaAdministracionSeeder::class,
+            Demoseeder::class,
         ]);
     }
 }
