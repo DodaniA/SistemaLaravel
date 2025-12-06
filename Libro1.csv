@@ -1,0 +1,30 @@
+nombre_generico,via_administracion,efecto,concentracion
+Paracetamol,Oral,Analgésico antipirético,500 mg
+Ibuprofeno,Oral,Analgésico antiinflamatorio,400 mg
+Amoxicilina,Oral,Antibiótico,500 mg
+Metformina,Oral,Antidiabético,850 mg
+Omeprazol,Oral,Antiácido inhibidor de bomba de protones,20 mg
+Losartan,Oral,Antihipertensivo,50 mg
+Furosemida,Intravenosa,Diurético de asa,20 mg/2 ml
+Furosemida,Oral,Diurético de asa,40 mg
+Salbutamol,Inhalatoria,Broncodilatador,100 mcg/dosis
+Insulina NPH,Subcutánea,Antidiabético insulina intermedia,100 UI/ml
+Insulina rápida,Subcutánea,Antidiabético insulina rápida,100 UI/ml
+Diclofenaco,Oral,Analgésico antiinflamatorio,50 mg
+Diclofenaco,Tópica,Analgésico antiinflamatorio,10 mg/g
+Loratadina,Oral,Antihistamínico,10 mg
+Ceftriaxona,Intravenosa,Antibiótico cefalosporina,1 g
+Ceftriaxona,Intramuscular,Antibiótico cefalosporina,1 g
+Metronidazol,Oral,Antibiótico antiparasitario,500 mg
+Metronidazol,Intravenosa,Antibiótico antiparasitario,500 mg/100 ml
+Ácido acetilsalicílico,Oral,Analgésico antiagregante,100 mg
+Atorvastatina,Oral,Hipolipemiante,20 mg
+Enalapril,Oral,Antihipertensivo IECA,10 mg
+Hidroclorotiazida,Oral,Diurético tiazídico,25 mg
+Naproxeno,Oral,Analgésico antiinflamatorio,550 mg
+Azitromicina,Oral,Antibiótico macrólido,500 mg
+Prednisona,Oral,Anti inflamatorio corticoide,5 mg
+Ciprofloxacino,Oral,Antibiótico quinolona,500 mg
+Ketorolaco,Intramuscular,Analgésico,30 mg/ml
+Morfina,Intravenosa,Analgésico opioide,10 mg/ml
+Morfina,Oral,Analgésico opioide,30 mg

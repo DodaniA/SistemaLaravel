@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Receta extends Model
@@ -22,7 +21,10 @@ class Receta extends Model
     {
         return $this->belongsTo(Paciente::class, 'paciente_id');
     }
-
+     public function medicamentos()
+    {
+        return $this->hasMany(RecetaMedicamento::class);
+    }
 
     public function doctor()
     {
@@ -33,6 +35,4 @@ class Receta extends Model
     {
         return $this->belongsTo(Cita::class, 'cita_id');
     }
-
-
 }

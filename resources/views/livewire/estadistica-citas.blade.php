@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <!-- Pendientes -->
+       
         <div class="rounded-lg border border-yellow-200 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-900/20 p-6">
             <div class="flex items-center justify-between">
                 <div>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <!-- Completadas -->
+       
         <div class="rounded-lg border border-green-200 dark:border-green-700 bg-green-50 dark:bg-green-900/20 p-6">
             <div class="flex items-center justify-between">
                 <div>
@@ -48,7 +48,6 @@
             </div>
         </div>
 
-        <!-- Canceladas -->
         <div class="rounded-lg border border-red-200 dark:border-red-700 bg-red-50 dark:bg-red-900/20 p-6">
             <div class="flex items-center justify-between">
                 <div>
@@ -64,7 +63,7 @@
         </div>
     </div>
 
-    <!-- Gráfico -->
+    
     <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6">
         <flux:heading size="sm" class="mb-4">Consultas por Mes</flux:heading>
         <canvas id="citasChart" class="w-full" style="max-height: 400px;"></canvas>
