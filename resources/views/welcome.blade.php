@@ -1,42 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{{ config('app.name', 'SGEM') }}</title>
-
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
-    <!-- Dark mode detection (aplicar antes de pintar la página) -->
-    <script>
-        (function() {
-            try {
-                var theme = localStorage.getItem('theme');
-                if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    return;
-                }
-                if (theme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                    return;
-                }
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.classList.add('dark');
-                }
-            } catch (e) {}
-        })();
-    </script>
-
-    <!-- Vite -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+   <head> <meta charset="utf-8"> 
+   <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   <title>Laravel</title> 
+   <link rel="icon" href="/favicon.ico" sizes="any"> 
+   <link rel="icon" href="/favicon.svg" type="image/svg+xml"> 
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <!-- Fonts --> 
+   <link rel="preconnect" href="https://fonts.bunny.net"> 
+   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" /> <!-- App CSS --> 
+   @vite(['resources/css/app.css', 'resources/js/app.js']) <!-- Styles (moved to app.css). Added dark-mode detection + Vite) --> <!-- Dark mode detection (apply early) --> 
+   <script> (function() { try { var theme = localStorage.getItem('theme'); if (theme === 'dark') { document.documentElement.classList.add('dark'); return; } if (theme === 'light') { document.documentElement.classList.remove('dark'); return; } if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.documentElement.classList.add('dark'); } } 
+   catch (e) { 
+    // silent fail 
+    } })(); </script> 
+   
+     <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
+    </head>
 
     <body class="min-h-screen flex items-center justify-center p-6">
         <main class="content-card w-full max-w-2xl mx-auto p-8 flex flex-col items-center gap-6 fade-in">
