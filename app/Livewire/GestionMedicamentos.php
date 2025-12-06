@@ -12,16 +12,12 @@ class GestionMedicamentos extends Component
     public $medicamentos;
     public $vias;
     public $efectos;
- 
-    public $medicamento_id = null;
+    public $med_id = null;
     public $nombre_generico = '';
     public $via_id = '';
     public $efecto_id = '';
     public $concentracion = '';
-    
-   
     public $mostrarModal = false;
-    public $modoEdicion = false;
 
     public function mount()
     {
@@ -37,42 +33,33 @@ class GestionMedicamentos extends Component
         $this->efectos = Efecto::orderBy('nombre')->get();
     }
 
-    public function abrirModalCrear()
+    public function nuevo()
     {
-        $this->resetearFormulario();
-        $this->modoEdicion = false;
+        $this->limpiar();
         $this->mostrarModal = true;
     }
 
-    public function abrirModalEditar($id)
+    public function editar($id)
     {
-        $medicamento = Medicamento::findOrFail($id);
+        $med = Medicamento::findOrFail($id);
         
-        $this->medicamento_id = $medicamento->id;
-        $this->nombre_generico = $medicamento->nombre_generico;
-        $this->via_id = $medicamento->via_id;
-        $this->efecto_id = $medicamento->efecto_id;
-        $this->concentracion = $medicamento->concentracion;
-        
-        $this->modoEdicion = true;
+        $this->med_id = $med->id;
+        $this->nombre_generico = $med->nombre_generico;
+        $this->via_id = $med->via_id;
+        $this->efecto_id = $med->efecto_id;
+        $this->concentracion = $med->concentracion;
         $this->mostrarModal = true;
     }
 
-    public function cerrarModal()
+    public function cancelar()
     {
         $this->mostrarModal = false;
-        $this->resetearFormulario();
+        $this->limpiar();
     }
 
-    public function resetearFormulario()
+    private function limpiar()
     {
-        $this->reset([
-            'medicamento_id',
-            'nombre_generico',
-            'via_id',
-            'efecto_id',
-            'concentracion'
-        ]);
+        $this->reset(['med_id', 'nombre_generico', 'via_id', 'efecto_id', 'concentracion']);
         $this->resetValidation();
     }
 
@@ -85,35 +72,43 @@ class GestionMedicamentos extends Component
             'concentracion' => 'required|string|max:255',
         ]);
 
-        if ($this->modoEdicion) {
-            $medicamento = Medicamento::findOrFail($this->medicamento_id);
-            $medicamento->update([
-                'nombre_generico' => $this->nombre_generico,
-                'via_id' => $this->via_id,
-                'efecto_id' => $this->efecto_id,
-                'concentracion' => $this->concentracion,
-            ]);
-            session()->flash('success', 'Medicamento actualizado correctamente.');
-        } else {
-            Medicamento::create([
-                'nombre_generico' => $this->nombre_generico,
-                'via_id' => $this->via_id,
-                'efecto_id' => $this->efecto_id,
-                'concentracion' => $this->concentracion,
-            ]);
-            session()->flash('success', 'Medicamento creado correctamente.');
+        $existe = Medicamento::where('nombre_generico', $this->nombre_generico)
+            ->where('concentracion', $this->concentracion)
+            ->where('id', '!=', $this->med_id ?? 0)
+            ->exists();
+
+        if ($existe) {
+            $this->addError('nombre_generico', 'Ya existe este medicamento con la misma concentración');
+            return;
         }
 
-        $this->cerrarModal();
+        $medicamento = $this->med_id 
+            ? Medicamento::findOrFail($this->med_id)
+            : new Medicamento();
+
+        $medicamento->fill([
+            'nombre_generico' => $this->nombre_generico,
+            'via_id' => $this->via_id,
+            'efecto_id' => $this->efecto_id,
+            'concentracion' => $this->concentracion,
+        ])->save();
+
+        // Mensaje según si es edición o creación
+        if ($this->med_id) {
+            session()->flash('success', 'Medicamento actualizado');
+        } else {
+            session()->flash('success', 'Medicamento creado exitosamente');
+        }
+        
+        $this->cancelar();
         $this->cargarDatos();
     }
 
+    // Eliminar un medicamento
     public function eliminar($id)
     {
-        $medicamento = Medicamento::findOrFail($id);
-        $medicamento->delete();
-        
-        session()->flash('success', 'Medicamento eliminado correctamente.');
+        Medicamento::findOrFail($id)->delete();
+        session()->flash('success', 'Medicamento eliminado');
         $this->cargarDatos();
     }
 

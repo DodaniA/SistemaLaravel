@@ -40,12 +40,12 @@ class CitaMedica extends Component
         $this->cargarReceta();
     }
 
+    // Cargar la receta actual si existe
     public function cargarReceta()
     {
         $doctorId = Doctor::where('user_id', auth()->id())->first()?->id;
         $cita = Cita::find($this->citaId);
 
-        // Buscar receta existente
         $this->receta = Receta::where('cita_id', $this->citaId)
             ->where('doctor_id', $doctorId)
             ->first();
@@ -53,7 +53,6 @@ class CitaMedica extends Component
         if ($this->receta) {
             $this->indicaciones = $this->receta->indicaciones;
             
-            // Cargar medicamentos recetados
             $this->medicamentosRecetados = RecetaMedicamento::where('receta_id', $this->receta->id)
                 ->with('medicamento.via', 'medicamento.efecto')
                 ->get()
@@ -82,7 +81,7 @@ class CitaMedica extends Component
             'indicaciones' => $this->indicaciones,
         ]);
 
-        session()->flash('success', 'Receta creada correctamente.');
+        session()->flash('success', '¡Receta creada exitosamente!');
         $this->cargarReceta();
     }
 
@@ -101,13 +100,13 @@ class CitaMedica extends Component
             'indicaciones' => $this->indicaciones,
         ]);
 
-        session()->flash('success', 'Indicaciones actualizadas correctamente.');
+        session()->flash('success', 'Indicaciones guardadas.');
     }
 
     public function abrirModalAgregar()
     {
         if (!$this->receta) {
-            session()->flash('error', 'Primero debes crear la receta con indicaciones.');
+            session()->flash('error', 'Primero debes crear la receta.');
             return;
         }
 
@@ -158,7 +157,7 @@ class CitaMedica extends Component
         ]);
 
         if ($this->medicamentoEditando) {
-            // Actualizar
+            // Actualizar medicamento existente
             $recetaMed = RecetaMedicamento::findOrFail($this->medicamentoEditando);
             $recetaMed->update([
                 'medicamento_id' => $this->medicamento_id,
@@ -167,9 +166,9 @@ class CitaMedica extends Component
                 'duracion' => $this->duracion,
                 'instrucciones' => $this->instrucciones,
             ]);
-            session()->flash('success', 'Medicamento actualizado correctamente.');
+            session()->flash('success', 'Medicamento actualizado.');
         } else {
-            // Crear
+     
             RecetaMedicamento::create([
                 'receta_id' => $this->receta->id,
                 'medicamento_id' => $this->medicamento_id,
@@ -178,7 +177,7 @@ class CitaMedica extends Component
                 'duracion' => $this->duracion,
                 'instrucciones' => $this->instrucciones,
             ]);
-            session()->flash('success', 'Medicamento agregado correctamente.');
+            session()->flash('success', 'Medicamento agregado.');
         }
 
         $this->cerrarModal();
@@ -190,7 +189,7 @@ class CitaMedica extends Component
         $recetaMed = RecetaMedicamento::findOrFail($id);
         $recetaMed->delete();
         
-        session()->flash('success', 'Medicamento eliminado correctamente.');
+        session()->flash('success', 'Medicamento eliminado.');
         $this->cargarReceta();
     }
 

@@ -9,17 +9,15 @@ use Livewire\Component;
 
 class UsersTable extends Component
 {
-    /** Tabla */
+
     public $users = [];
 
-    /** Creación (form arriba o donde lo pongas) */
     public $name = '';
     public $email = '';
     public $role = ' Paciente'; 
     public $password = '';
     public $password_confirmation = '';
 
-    /** Edición inline */
     public $editId = null;
     public $form = [
         'name'  => '',
@@ -39,13 +37,13 @@ class UsersTable extends Component
             ->get();
     }
 
-    /** ---------- CREACIÓN ---------- */
+
     protected function creationRules(): array
     {
         return [
             'name'                  => ['required','string','max:255'],
             'email'                 => ['required','email','max:255','unique:users,email'],
-            'role'                   => ['required','in:Cordinador,Profesor,Alumno'], // unifica ortografía con tu BD
+            'role'                   => ['required','in:Cordinador,Profesor,Alumno'], 
             'password'              => ['required','string','min:8','confirmed'],
         ];
     }
@@ -61,16 +59,14 @@ class UsersTable extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        // Limpia el formulario de creación
         $this->reset(['name','email','rol','password','password_confirmation']);
 
-        // Recarga la tabla
         $this->loadUsers();
 
         session()->flash('success', 'Usuario creado.');
     }
 
-    /** ---------- EDICIÓN ---------- */
+
     protected function updateRules(): array
     {
         return [
@@ -117,7 +113,6 @@ class UsersTable extends Component
         $this->form = ['name'=>'','email'=>'','role'=>''];
     }
 
-    /** ---------- RENDER ---------- */
     public function render()
     {
         return view('livewire.users-table');

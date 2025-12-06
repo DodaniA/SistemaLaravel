@@ -16,6 +16,7 @@ class CardDoctores extends Component
         $this->cargarDoctores();
     }
 
+    // Obtener la lista de doctores disponibles
     public function cargarDoctores()
     {
         $this->doctores = Doctor::with(['user', 'especialidad'])

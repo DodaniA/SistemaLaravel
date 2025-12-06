@@ -42,6 +42,6 @@ class FormularioMedico extends Component
         $this->reset(['especialidad_id', 'cedula_profesional', 'descripcion']);
 
         session()->flash('success', 'Información guardada correctamente.');
-         return redirect()->to('/dashboard');
+        return redirect()->to('/dashboard');
     }
 }

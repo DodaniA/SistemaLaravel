@@ -6,10 +6,12 @@
     @endif
 
     <div class="flex items-center justify-between">
-        <flux:heading size="lg"><h1 class="text-3xl font-bold text-gradient-orange">Gestión de Medicamentos</h1></flux:heading>
-        <flux:button wire:click="abrirModalCrear" variant="primary">
+        <flux:heading size="lg">
+            <h1 class="text-3xl font-bold text-gradient-orange">Gestión de Medicamentos</h1>
+        </flux:heading>
+        <flux:button wire:click="nuevo" variant="primary">
             <flux:icon.plus class="size-5" />
-             Nuevo Medicamento
+            Nuevo Medicamento
         </flux:button>
     </div>
 
@@ -40,32 +42,32 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
-                    @foreach($medicamentos as $medicamento)
+                    @foreach($medicamentos as $med)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
-                                {{ $medicamento->nombre_generico }}
+                                {{ $med->nombre_generico }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                                {{ $medicamento->concentracion }}
+                                {{ $med->concentracion }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                                {{ $medicamento->via?->nombre ?? 'N/A' }}
+                                {{ $med->via?->nombre ?? 'N/A' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                                {{ $medicamento->efecto?->nombre ?? 'N/A' }}
+                                {{ $med->efecto?->nombre ?? 'N/A' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-end gap-2">
                                     <flux:button 
-                                        wire:click="abrirModalEditar({{ $medicamento->id }})"
+                                        wire:click="editar({{ $med->id }})"
                                         variant="ghost" 
                                         size="sm"
                                     >
                                         <flux:icon.pencil class="size-4" />
                                     </flux:button>
                                     <flux:button 
-                                        wire:click="eliminar({{ $medicamento->id }})"
-                                        wire:confirm="¿Estás seguro de eliminar este medicamento?"
+                                        wire:click="eliminar({{ $med->id }})"
+                                        wire:confirm="¿Eliminar este medicamento?"
                                         variant="danger" 
                                         size="sm"
                                     >
@@ -80,20 +82,18 @@
         </div>
     @endif
 
-    <!-- Modal -->
     @if($mostrarModal)
         <flux:modal name="modal-medicamento" class="space-y-6" wire:model="mostrarModal">
             <div>
                 <flux:heading size="lg">
-                    {{ $modoEdicion ? 'Editar Medicamento' : 'Nuevo Medicamento' }}
+                    {{ $med_id ? 'Editar Medicamento' : 'Nuevo Medicamento' }}
                 </flux:heading>
                 <flux:subheading>
-                    {{ $modoEdicion ? 'Actualiza la información del medicamento' : 'Completa el formulario para crear un medicamento' }}
+                    {{ $med_id ? 'Actualiza la información' : 'Completa el formulario' }}
                 </flux:subheading>
             </div>
 
             <form wire:submit.prevent="guardar" class="space-y-6">
-                <!-- Nombre Genérico -->
                 <flux:input
                     wire:model="nombre_generico"
                     label="Nombre Genérico"
@@ -104,7 +104,6 @@
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
 
-                <!-- Concentración -->
                 <flux:input
                     wire:model="concentracion"
                     label="Concentración"
@@ -115,12 +114,7 @@
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
 
-               <!-- Vía de Administración -->
-                <flux:select
-                    wire:model="via_id"
-                    label="Vía de Administración"
-                    required
-                >
+                <flux:select wire:model="via_id" label="Vía de Administración" required>
                     <option value="">Seleccione una vía</option>
                     @foreach($vias as $via)
                         <flux:select.option value="{{ $via->id }}">{{ $via->nombre }}</flux:select.option>
@@ -130,12 +124,7 @@
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
 
-                <!-- Efecto -->
-                <flux:select
-                    wire:model="efecto_id"
-                    label="Efecto"
-                    required
-                >
+                <flux:select wire:model="efecto_id" label="Efecto" required>
                     <option value="">Seleccione un efecto</option>
                     @foreach($efectos as $efecto)
                         <flux:select.option value="{{ $efecto->id }}">{{ $efecto->nombre }}</flux:select.option>
@@ -144,17 +133,13 @@
                 @error('efecto_id')
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
-                <!-- Botones -->
+
                 <div class="flex gap-2 justify-end">
-                    <flux:button 
-                        type="button" 
-                        variant="ghost" 
-                        wire:click="cerrarModal"
-                    >
+                    <flux:button type="button" variant="ghost" wire:click="cancelar">
                         Cancelar
                     </flux:button>
                     <flux:button type="submit" variant="primary">
-                        {{ $modoEdicion ? 'Actualizar' : 'Guardar' }}
+                        {{ $med_id ? 'Actualizar' : 'Guardar' }}
                     </flux:button>
                 </div>
             </form>

@@ -18,52 +18,45 @@ class MedicamentosImport implements ToModel, WithHeadingRow, WithValidation, Ski
 
     public function model(array $row)
     {
-        // Buscar o crear Vía de Administración
-        $via = ViaAdministracion::firstOrCreate(
-            ['nombre' => trim($row['via_administracion'])]
-        );
-
-        // Buscar o crear Efecto
-        $efecto = Efecto::firstOrCreate(
-            ['nombre' => trim($row['efecto'])]
-        );
+        $via = ViaAdministracion::firstOrCreate(['nombre' => trim($row['via_administracion'])]);
+        $efecto = Efecto::firstOrCreate(['nombre' => trim($row['efecto'])]);
 
         return new Medicamento([
             'nombre_generico' => trim($row['nombre_generico']),
-            'via_id'          => $via->id,
-            'efecto_id'       => $efecto->id,
-            'concentracion'   => trim($row['concentracion']),
+            'via_id' => $via->id,
+            'efecto_id' => $efecto->id,
+            'concentracion' => trim($row['concentracion']),
         ]);
     }
 
     public function rules(): array
     {
         return [
-            'nombre_generico'     => 'required|string|max:255',
-            'via_administracion'  => 'required|string|max:255',
-            'efecto'              => 'required|string|max:255',
-            'concentracion'       => 'required|string|max:255',
+            'nombre_generico' => 'required|max:255',
+            'via_administracion' => 'required|max:255',
+            'efecto' => 'required|max:255',
+            'concentracion' => 'required|max:255',
         ];
     }
 
     public function customValidationMessages()
     {
         return [
-            'nombre_generico.required'     => 'El nombre genérico es obligatorio',
-            'via_administracion.required'  => 'La vía de administración es obligatoria',
-            'efecto.required'              => 'El efecto es obligatorio',
-            'concentracion.required'       => 'La concentración es obligatoria',
+            '*.required' => 'Campo obligatorio',
+            'nombre_generico.required' => 'Nombre requerido',
+            'via_administracion.required' => 'Vía requerida',
+            'efecto.required' => 'Efecto requerido',
+            'concentracion.required' => 'Concentración requerida',
         ];
     }
 
     public function onFailure(Failure ...$failures)
     {
-        foreach ($failures as $failure) {
+        foreach ($failures as $f) {
             $this->errores[] = [
-                'fila' => $failure->row(),
-                'atributo' => $failure->attribute(),
-                'errores' => $failure->errors(),
-                'valores' => $failure->values(),
+                'fila' => $f->row(),
+                'campo' => $f->attribute(),
+                'errores' => $f->errors(),
             ];
         }
     }

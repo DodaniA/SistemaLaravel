@@ -79,7 +79,7 @@
         function inicializarGrafico(datos) {
             const ctx = document.getElementById('citasChart');
             
-            // Destruir el gráfico anterior si existe
+       
             if (chart) {
                 chart.destroy();
             }
@@ -139,10 +139,9 @@
             });
         }
 
-        // Inicializar con los datos de Livewire
+
         inicializarGrafico(@json($datos));
 
-        // Escuchar evento de actualización
         $wire.on('actualizarGrafico', (event) => {
             inicializarGrafico(event[0].datos);
         });
