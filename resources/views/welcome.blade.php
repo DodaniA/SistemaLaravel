@@ -9,12 +9,11 @@
    <link rel="preconnect" href="https://fonts.bunny.net"> 
    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" /> <!-- App CSS --> 
    @vite(['resources/css/app.css', 'resources/js/app.js']) <!-- Styles (moved to app.css). Added dark-mode detection + Vite) --> <!-- Dark mode detection (apply early) --> 
+   
    <script> (function() { try { var theme = localStorage.getItem('theme'); if (theme === 'dark') { document.documentElement.classList.add('dark'); return; } if (theme === 'light') { document.documentElement.classList.remove('dark'); return; } if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.documentElement.classList.add('dark'); } } 
    catch (e) { 
     // silent fail 
     } })(); </script> 
-   
-     <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
     </head>
 
     <body class="min-h-screen flex items-center justify-center p-6">
