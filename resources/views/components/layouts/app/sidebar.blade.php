@@ -27,7 +27,15 @@
                         wire:navigate>
                         {{ __('Citas') }}
                     </flux:navlist.item>
-                    
+                    @if (auth()->user() && auth()->user()->role === 'Paciente')
+                    <flux:navlist.item 
+                        icon="bookmark-square" 
+                        :href="route('recetas')" 
+                        :current="request()->routeIs('recetas')" 
+                        wire:navigate>
+                        {{ __('Recetas') }}
+                    </flux:navlist.item>
+                    @endif
                      @if (auth()->user() && auth()->user()->role === 'Administrador')
                     <flux:navlist.item 
                         icon="users" 

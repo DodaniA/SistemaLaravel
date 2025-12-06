@@ -7,7 +7,10 @@ use App\Livewire\Settings\TwoFactor;
 use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Livewire\CitasDoctor;
 use App\Livewire\FormularioMedico;
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -24,9 +27,10 @@ Route::view('usuarios', 'usuarios')
 Route::view('materias', 'materias')
     ->middleware(['auth', 'verified'])
     ->name('materias');
-Route::view('atender', 'atender')
+Route::view('recetas', 'recetas')
     ->middleware(['auth', 'verified'])
-    ->name('atender');
+    ->name('recetas');
+Route::get('/atender/{citaId}', [DoctorController::class, 'atender'])->name('atender');
 Route::view('inscripciones', 'inscripciones')
     ->middleware(['auth', 'verified'])
     ->name('inscripciones');

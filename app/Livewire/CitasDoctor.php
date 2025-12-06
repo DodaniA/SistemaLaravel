@@ -87,7 +87,7 @@ class CitasDoctor extends Component
             ->firstOrFail();
 
 
-        return redirect()->route('atender', $cita->id);
+        return redirect()->route('atender', ['citaId' => $cita->id]);
     }
 
     public function render()

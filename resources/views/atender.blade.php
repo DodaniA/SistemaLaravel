@@ -1,5 +1,3 @@
 <x-layouts.app :title="__('Atender')">
-
-
-<div>holios</div>
+    <livewire:cita-medica :citaId="$citaId" />
 </x-layouts.app>

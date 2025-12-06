@@ -1,5 +1,5 @@
-<div class="space-y-6">
-    <flux:heading size="lg">Doctores</flux:heading>
+<div class="space-y-6"><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <flux:heading size="lg"><h1 class="text-3xl font-bold text-gradient-orange">Doctores Disponibles</h1></flux:heading>
 
     @if($doctores->isEmpty())
         <div class="rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-8 text-center">

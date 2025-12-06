@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Doctor;
+use App\Models\Cita;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -21,4 +22,17 @@ class DoctorController extends Controller
         ]);
         return redirect()->route('dashboard')->with('success', 'Información guardada correctamente.');
     }
+    public function atender($citaId)
+    {
+        $doctorId = Doctor::where('user_id', auth()->id())->first()?->id;
+        if (!$doctorId) {
+            abort(403, 'No tienes permisos para acceder a esta página.');
+        }
+        $cita = Cita::where('id', $citaId)
+            ->where('doctor_id', $doctorId)
+            ->firstOrFail();
+        return view('atender', ['citaId' => $citaId]);
+    }
+
+
 }
