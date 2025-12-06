@@ -1,8 +1,12 @@
 @import "tailwindcss";
 @import "../../vendor/livewire/flux/dist/flux.css";
 
+/* ============================================
+   TEMA BASE - VARIABLES (MODO CLARO)
+   ============================================ */
 :root {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* Escala de Zinc (mantener para compatibilidad) */
     --color-zinc-50: #fafafa;
@@ -16,9 +20,6 @@
     --color-zinc-800: #262626;
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
-
-    /* Color blanco base */
-    --color-white: #ffffff;
 
     /* ============================================
        PALETA NARANJA MÉDICO - TEMA CLARO
@@ -35,7 +36,7 @@
     --color-orange-700: #c2410c;  /* Naranja oscuro */
     --color-orange-800: #9a3412;  /* Muy oscuro */
     --color-orange-900: #7c2d12;  /* Casi negro */
-    
+
     /* Éxito - Verde Esmeralda */
     --color-emerald-50: #ecfdf5;
     --color-emerald-100: #d1fae5;
@@ -45,7 +46,7 @@
     --color-emerald-500: #10b981;
     --color-emerald-600: #059669;
     --color-emerald-700: #047857;
-    
+
     /* Advertencia - Ámbar */
     --color-amber-50: #fffbeb;
     --color-amber-100: #fef3c7;
@@ -55,7 +56,7 @@
     --color-amber-500: #f59e0b;
     --color-amber-600: #d97706;
     --color-amber-700: #b45309;
-    
+
     /* Peligro - Rojo */
     --color-red-50: #fef2f2;
     --color-red-100: #fee2e2;
@@ -65,7 +66,7 @@
     --color-red-500: #ef4444;
     --color-red-600: #dc2626;
     --color-red-700: #b91c1c;
-    
+
     /* Slate para textos */
     --color-slate-50: #f8fafc;
     --color-slate-100: #f1f5f9;
@@ -82,89 +83,92 @@
     /* Colores de Acento - Sistema Médico */
     --color-accent: var(--color-orange-600);
     --color-accent-content: var(--color-orange-600);
-    --color-accent-foreground: var(--color-white);
-    
+    --color-accent-foreground: #ffffff;
+
     /* Colores de Fondo */
     --color-background: #faf8f3;
     --color-foreground: var(--color-slate-800);
-    
+
     /* Colores de Tarjetas */
-    --color-card: var(--color-white);
+    --color-card: #ffffff;
     --color-card-foreground: var(--color-slate-800);
-    
+
     /* Colores de Bordes */
     --color-border: var(--color-orange-200);
     --color-input: var(--color-orange-200);
-    
+
     /* Ring/Focus */
     --color-ring: var(--color-orange-600);
-    
+
     /* Muted */
     --color-muted: var(--color-orange-100);
     --color-muted-foreground: var(--color-slate-600);
-    
+
     /* Primary */
     --color-primary: var(--color-orange-600);
-    --color-primary-foreground: var(--color-white);
-    
+    --color-primary-foreground: #ffffff;
+
     /* Secondary */
     --color-secondary: var(--color-orange-100);
     --color-secondary-foreground: var(--color-orange-600);
-    
+
     /* Success */
     --color-success: var(--color-emerald-600);
-    --color-success-foreground: var(--color-white);
-    
+    --color-success-foreground: #ffffff;
+
     /* Warning */
     --color-warning: var(--color-amber-600);
-    --color-warning-foreground: var(--color-white);
-    
+    --color-warning-foreground: #ffffff;
+
     /* Destructive */
     --color-destructive: var(--color-red-600);
-    --color-destructive-foreground: var(--color-white);
+    --color-destructive-foreground: #ffffff;
 }
 
+/* ============================================
+   TEMA OSCURO (clase .dark en <html>)
+   ============================================ */
 @layer theme {
     .dark {
-        /* ============================================
-           PALETA NARANJA MÉDICO - TEMA OSCURO
-           ============================================ */
-        
+        /* Paleta en modo oscuro */
         --color-accent: var(--color-orange-500);
         --color-accent-content: var(--color-orange-500);
-        --color-accent-foreground: var(--color-white);
-        
+        --color-accent-foreground: #ffffff;
+
         --color-background: var(--color-slate-900);
         --color-foreground: var(--color-slate-50);
-        
+
         --color-card: var(--color-slate-800);
         --color-card-foreground: var(--color-slate-50);
-        
+
         --color-border: var(--color-slate-700);
         --color-input: var(--color-slate-700);
-        
+
         --color-ring: var(--color-orange-500);
-        
+
         --color-muted: var(--color-slate-800);
         --color-muted-foreground: var(--color-slate-400);
-        
+
         --color-primary: var(--color-orange-500);
-        --color-primary-foreground: var(--color-white);
-        
+        --color-primary-foreground: #ffffff;
+
         --color-secondary: var(--color-slate-800);
         --color-secondary-foreground: var(--color-orange-500);
-        
+
         --color-success: var(--color-emerald-500);
-        --color-success-foreground: var(--color-white);
-        
+        --color-success-foreground: #ffffff;
+
         --color-warning: var(--color-amber-500);
-        --color-warning-foreground: var(--color-white);
-        
+        --color-warning-foreground: #ffffff;
+
         --color-destructive: var(--color-red-500);
-        --color-destructive-foreground: var(--color-white);
+        --color-destructive-foreground: #ffffff;
     }
 }
 
+/* ============================================
+   BASE
+   ============================================ */
 @layer base {
     *,
     ::after,
@@ -173,7 +177,7 @@
     ::file-selector-button {
         border-color: var(--color-border, currentColor);
     }
-    
+
     body {
         background-color: var(--color-background);
         color: var(--color-foreground);
@@ -188,25 +192,27 @@
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid;
-    gap: 0.5rem; /* equivalente a gap-2 sin usar @apply */
+    /* antes era @apply grid gap-2; que daba error con Tailwind 4 */
+    gap: 0.5rem; /* equivalente a gap-2 */
 }
 
 [data-flux-label] {
-    @apply mb-0 leading-tight font-semibold;
-    margin-bottom: 0 !important;        /* reemplazo de !mb-0 */
-    color: var(--color-foreground);     /* reemplazo de text-foreground */
+    /* Quitamos !mb-0, !leading y text-foreground del @apply */
+    @apply leading-tight font-semibold;
+    margin-bottom: 0 !important;
+    color: var(--color-foreground);
 }
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
+    /* outline-hidden no existe; usamos outline-none */
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
 }
 
 /* ============================================
    COMPONENTES PERSONALIZADOS MÉDICOS
    ============================================ */
-
 @layer components {
     /* Botones Médicos */
     .btn-medical-primary {
@@ -218,9 +224,9 @@ select:focus[data-flux-control] {
                hover:scale-[1.02] active:scale-[0.98]
                transition-all duration-200 ease-in-out
                disabled:opacity-50 disabled:cursor-not-allowed;
-        gap: 0.5rem; /* antes era gap-2 en @apply */
+        gap: 0.5rem; /* antes gap-2 en @apply */
     }
-    
+
     .btn-medical-secondary {
         @apply inline-flex items-center justify-center px-6 py-3 
                bg-white dark:bg-slate-800 
@@ -233,7 +239,7 @@ select:focus[data-flux-control] {
                disabled:opacity-50 disabled:cursor-not-allowed;
         gap: 0.5rem;
     }
-    
+
     .btn-medical-success {
         @apply inline-flex items-center justify-center px-6 py-3 
                bg-emerald-600 text-white font-semibold rounded-lg 
@@ -242,7 +248,7 @@ select:focus[data-flux-control] {
                transition-all duration-200 ease-in-out;
         gap: 0.5rem;
     }
-    
+
     .btn-medical-danger {
         @apply inline-flex items-center justify-center px-6 py-3 
                bg-red-600 text-white font-semibold rounded-lg 
@@ -260,52 +266,52 @@ select:focus[data-flux-control] {
                shadow-sm hover:shadow-md 
                transition-all duration-200 ease-in-out cursor-default;
     }
-    
+
     .stat-card-orange {
         @apply hover:border-orange-300 dark:hover:border-orange-500;
     }
-    
+
     .stat-card-success {
         @apply hover:border-emerald-300 dark:hover:border-emerald-500;
     }
-    
+
     .stat-card-warning {
         @apply hover:border-amber-300 dark:hover:border-amber-500;
     }
-    
+
     .stat-card-danger {
         @apply hover:border-red-300 dark:hover:border-red-500;
     }
-    
+
     /* Iconos de Estadística */
     .stat-icon {
         @apply w-12 h-12 rounded-lg flex items-center justify-center;
     }
-    
+
     .stat-icon-orange {
         @apply bg-gradient-to-br from-orange-100 to-orange-200 
                dark:from-orange-900/50 dark:to-orange-800/50
                text-orange-600 dark:text-orange-400;
     }
-    
+
     .stat-icon-success {
         @apply bg-gradient-to-br from-emerald-100 to-emerald-200 
                dark:from-emerald-900/50 dark:to-emerald-800/50
                text-emerald-600 dark:text-emerald-400;
     }
-    
+
     .stat-icon-warning {
         @apply bg-gradient-to-br from-amber-100 to-amber-200 
                dark:from-amber-900/50 dark:to-amber-800/50
                text-amber-600 dark:text-amber-400;
     }
-    
+
     .stat-icon-danger {
         @apply bg-gradient-to-br from-red-100 to-red-200 
                dark:from-red-900/50 dark:to-red-800/50
                text-red-600 dark:text-red-400;
     }
-    
+
     /* Badges de Estado */
     .badge-success {
         @apply inline-flex px-3 py-1.5 
@@ -314,7 +320,7 @@ select:focus[data-flux-control] {
                border border-emerald-200 dark:border-emerald-700
                text-xs font-bold rounded-full;
     }
-    
+
     .badge-warning {
         @apply inline-flex px-3 py-1.5 
                bg-amber-100 dark:bg-amber-900/50 
@@ -322,7 +328,7 @@ select:focus[data-flux-control] {
                border border-amber-200 dark:border-amber-700
                text-xs font-bold rounded-full;
     }
-    
+
     .badge-danger {
         @apply inline-flex px-3 py-1.5 
                bg-red-100 dark:bg-red-900/50 
@@ -330,7 +336,7 @@ select:focus[data-flux-control] {
                border border-red-200 dark:border-red-700
                text-xs font-bold rounded-full;
     }
-    
+
     .badge-info {
         @apply inline-flex px-3 py-1.5 
                bg-orange-100 dark:bg-orange-900/50 
@@ -338,7 +344,7 @@ select:focus[data-flux-control] {
                border border-orange-200 dark:border-orange-700
                text-xs font-bold rounded-full;
     }
-    
+
     /* Navegación */
     .nav-item {
         @apply flex items-center gap-3 w-full px-4 py-3 
@@ -348,13 +354,13 @@ select:focus[data-flux-control] {
                hover:text-orange-600 dark:hover:text-orange-400
                transition-all duration-200 ease-in-out;
     }
-    
+
     .nav-item-active {
         @apply bg-gradient-to-r from-orange-600 to-orange-500 
                text-white shadow-md shadow-orange-600/30
                hover:text-white dark:hover:text-white;
     }
-    
+
     /* Lista de Pacientes */
     .patient-list-item {
         @apply flex items-center justify-between p-5 
@@ -363,18 +369,18 @@ select:focus[data-flux-control] {
                cursor-pointer
                transition-all duration-200 ease-in-out;
     }
-    
+
     .patient-avatar {
         @apply w-12 h-12 rounded-full flex items-center justify-center 
                bg-gradient-to-br from-orange-500 to-orange-600 
                text-white font-bold shadow-md
                transition-transform duration-200 ease-in-out;
     }
-    
+
     .patient-list-item:hover .patient-avatar {
         @apply scale-110;
     }
-    
+
     /* Barra de Búsqueda */
     .search-input-medical {
         @apply w-full pl-10 pr-4 py-2.5 
@@ -387,29 +393,29 @@ select:focus[data-flux-control] {
                focus:bg-white dark:focus:bg-slate-900
                transition-all duration-200 ease-in-out;
     }
-    
+
     /* Tarjeta de Contenido */
     .content-card {
         @apply bg-white dark:bg-slate-800 
                rounded-xl border border-orange-100 dark:border-slate-700 
                shadow-md;
     }
-    
+
     .content-card-header {
         @apply px-6 py-4 border-b border-orange-100 dark:border-slate-700 
                bg-gradient-to-r from-orange-50 dark:from-slate-900 
                to-white dark:to-slate-800;
     }
-    
+
     /* Animaciones */
     .fade-in {
         animation: fadeIn 0.3s ease-in-out;
     }
-    
+
     .slide-in {
         animation: slideIn 0.3s ease-in-out;
     }
-    
+
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -420,7 +426,7 @@ select:focus[data-flux-control] {
             transform: translateY(0);
         }
     }
-    
+
     @keyframes slideIn {
         from {
             opacity: 0;
@@ -436,35 +442,34 @@ select:focus[data-flux-control] {
 /* ============================================
    UTILIDADES MÉDICAS
    ============================================ */
-
 @layer utilities {
     /* Texto con gradiente naranja */
     .text-gradient-orange {
         @apply bg-gradient-to-r from-orange-600 to-orange-500 
                bg-clip-text text-transparent;
     }
-    
+
     /* Sombras con color primario */
     .shadow-primary {
         box-shadow: 0 4px 14px 0 rgb(234 88 12 / 0.2);
     }
-    
+
     .shadow-primary-lg {
         box-shadow: 0 8px 20px 0 rgb(234 88 12 / 0.3);
     }
-    
+
     /* Scrollbar personalizado */
     .scrollbar-medical::-webkit-scrollbar {
         width: 8px;
         height: 8px;
     }
-    
-    .scrollbar-medical::-webkit-scrollbar-track {
-        @apply bg-orange-50 dark:bg-slate-800 rounded-full;
-    }
-    
+
     .scrollbar-medical::-webkit-scrollbar-thumb {
-        @apply bg-orange-300 dark:bg-slate-600 rounded-full 
-               hover:bg-orange-400 dark:hover:bg-slate-500;
+        background-color: rgb(234 88 12 / 0.6);
+        border-radius: 9999px;
+    }
+
+    .scrollbar-medical::-webkit-scrollbar-track {
+        background-color: transparent;
     }
 }
